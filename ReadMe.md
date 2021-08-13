@@ -4,6 +4,10 @@
 
 "A disciplina EXA854 - MI - ALGORITMOS do primeiro semestre do curso de Engenharia de Computação da Universidade Estadual de Feira de Santana (UEFS), que trabalha com o método de ensino Aprendizagem Baseada em Problemas (PBL), visa aproximar o estudante da área  de computação com problemas cotidianos com o fito de estimular o aluno a buscar conhecimento. Dito isso, a pofessora da disciplina resolveu passar o seguite problema com o objetivo de testar nossos conhecimentos e utiliza-los para resolver um problema cotidiano."
 
+## Enunciado
+
+"O Comitê está em constante contato com os nossos atletas, fazendo algumas perguntas sobre seu estado de saúde visando identificar rapidamente possíveis casos da doença. Querem também evitar que atletas façam uso do “kit COVID”, tratamento precoce comprovadamente não eficaz e que pode gerar complicações. Mas como nem todo mundo acredita na ciência, essa é outra estatística importante que o Comitê quer avaliar."
+
 ## Ao final da leitura dos dados, o sistema “UEFS pelos Atletas” deverá exibir um relatório com as seguintes informações:
 
 | Nº | Descrição | 

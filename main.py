@@ -14,36 +14,51 @@ print("Sistema UEFS pelos atletas\n")
 
 rep = 's'
 
+# espaço para as listas ficarem predefinidamente salvas
+
+age = []
+gender = []
+fever = []
+syptom = []
+kit = []
+medal = []
+quant = 0
 # Se eu digitar um numero em vez de uma string e dar erro?
 
 while rep.lower() == 's':
-
-    age = int(input("Digite sua idade: "))
-    gender = input("Digite seu sexo (M/F): ")
+    quant += 1
+    age.append(int(input("Digite sua idade: ")))
+    gender.append(input("Digite seu sexo (M/F): "))
     fever = input("Teve febre (S/N): ")
 
     if fever.lower() == 's':
-        temperatura = float(input("Qual foi a maior temperatura detectada: "))
+        temperatura = []
+        temperatura.append(float(input("Qual foi a maior temperatura detectada: ")))
 
     else:
-        symptom = input("Teve algum sintoma (S/N): ")
+        symptom = []
+        symptom.append(input("Teve algum sintoma (S/N): "))
 
-    kit = input("Tomou o kit Covid ao retornar ao Brasil (S/N): ")
+    kit.append(input("Tomou o kit Covid ao retornar ao Brasil (S/N): "))
 
     medal = input("Ganhou alguma medalha? (S/N): ")
     
 # Calcular a quantidade de medalhas e qual o seu tipo (Ouro, Prata, Bronze)
 
     if medal.lower() == 's':
-
-        gold = int(input("Quantas medalhas de ouro?: "))
-        silver = int(input("Quantas medalhas de prata?: "))
-        bronze = int(input("Quantas medalhas de bronze?: "))
+        gold = []
+        silver = []
+        bronze = []
+        gold.append(int(input("Quantas medalhas de ouro?: ")))
+        silver.append(int(input("Quantas medalhas de prata?: ")))
+        bronze.append(int(input("Quantas medalhas de bronze?: ")))
     
     rep = input("Deseja cadastrar um novo atleta?(S/N): ")
 
     if rep.lower() == 'n':
 
         print("O cadastramento foi encerrado!!!")
+
+print(f"A quantidade de atletas cadastrados é de: {quant}")
 
 # Processamento de dados:

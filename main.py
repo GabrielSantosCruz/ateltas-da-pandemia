@@ -23,7 +23,7 @@ while rep.lower() == 's':
     fever = input("Teve febre (S/N): ")
 
     if fever.lower() == 's':
-        temperatura = float(input("Qual foi a maior temperatura detectada"))
+        temperatura = float(input("Qual foi a maior temperatura detectada: "))
 
     else:
         symptom = input("Teve algum sintoma (S/N): ")

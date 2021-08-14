@@ -9,13 +9,15 @@
 "O Comitê está em constante contato com os nossos atletas, fazendo algumas perguntas sobre seu estado de saúde visando identificar rapidamente possíveis casos da doença. Querem também evitar que atletas façam uso do “kit COVID”, tratamento precoce comprovadamente não eficaz e que pode gerar complicações. Mas como nem todo mundo acredita na ciência, essa é outra estatística importante que o Comitê quer avaliar."
 
 ### O sistema deve permitir a entrada dos seguintes dados para cada atleta:
-| :------------: |
-| Idade e sexo; |
-| Se teve febre; |
-| Caso tenha tido febre, a temperatura corporal mais alta registrada desde que voltou de Tóquio; |
-| Se não teve febre, teve algum outro sintoma (sim ou não apenas); |
-| Se tomou o “kit COVID” ao retornar ao Brasil; |
-| Finalmente, se ganhou medalha (quantas e quais). |
+
+| Nº | Descrição | 
+| :---------: | :------------: |
+| 01 | Idade e sexo; |
+| 02 | Se teve febre; |
+| 03 | Caso tenha tido febre, a temperatura corporal mais alta registrada desde que voltou de Tóquio; |
+| 04 | Se não teve febre, teve algum outro sintoma (sim ou não apenas); |
+| 05 | Se tomou o “kit COVID” ao retornar ao Brasil; |
+| 06 | Finalmente, se ganhou medalha (quantas e quais). |
 
 ## Ao final da leitura dos dados, o sistema “UEFS pelos Atletas” deverá exibir um relatório com as seguintes informações:
 

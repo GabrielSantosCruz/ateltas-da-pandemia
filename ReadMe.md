@@ -10,7 +10,7 @@
 
 ### O sistema deve permitir a entrada dos seguintes dados para cada atleta:
 
-| Nº | Descrição | 
+| Nº | Inputs | 
 | :---------: | :------------: |
 | 01 | Idade e sexo; |
 | 02 | Se teve febre; |

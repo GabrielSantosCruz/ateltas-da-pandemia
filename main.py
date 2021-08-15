@@ -92,7 +92,11 @@ while rep.lower() == 's':
 athletes_symptoms = symptom.count('s') 
 athletes_porcent = (athletes_symptoms * 100) / quant    
 
+    # Idade média de todos os atletas, dos atletas sem sintomas, e dos atletas sintomáticos;
+
+middle_ages = sum(age) / len(age)
+
 # Saida de dados
 
 print(f"A quantidade de atletas cadastrados é de: {quant}")
-print(f"A quantidade de atletas que tiveram sintomas e de {athletes_symptoms}. O que equivale a {athletes_porcent}% do total")
+print(f"A quantidade de atletas que tiveram sintomas e de {athletes_symptoms}.\nO que equivale a {athletes_porcent}% do total")

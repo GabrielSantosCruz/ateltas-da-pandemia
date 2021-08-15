@@ -27,7 +27,14 @@ quant = 0
 
 while rep.lower() == 's':
     quant += 1
-    age.append(int(input("Digite sua idade: ")))
+    while True:
+        try:
+            age.append(int(input("Digite sua idade: ")))
+            break
+        except ValueError:
+            print("Erro! Digite a idade em números! ")
+            continue
+
     gender.append(input("Digite seu sexo (M/F): "))
     fever = input("Teve febre (S/N): ")
 
@@ -49,10 +56,30 @@ while rep.lower() == 's':
         gold = []
         silver = []
         bronze = []
-        gold.append(int(input("Quantas medalhas de ouro?: ")))
-        silver.append(int(input("Quantas medalhas de prata?: ")))
-        bronze.append(int(input("Quantas medalhas de bronze?: ")))
-    
+        while True:
+            try:
+                gold.append(int(input("Quantas medalhas de ouro?: ")))
+                break
+            except ValueError:
+                print("Erro! Digite um número! ")
+                continue
+        
+        while True:
+            try:
+                silver.append(int(input("Quantas medalhas de prata?: ")))
+                break
+            except ValueError:
+                print("Erro! Digite um número!")
+                continue       
+        
+        while True:
+            try:
+                bronze.append(int(input("Quantas medalhas de bronze?: ")))
+                break
+            except ValueError:
+                print("Erro! Digite um número!")
+            continue
+        
     rep = input("Deseja cadastrar um novo atleta?(S/N): ")
 
     if rep.lower() == 'n':

@@ -23,7 +23,7 @@ syptom = []
 kit = []
 medal = []
 quant = 0
-# Se eu digitar um numero em vez de uma string e dar erro?
+
 
 while rep.lower() == 's':
     quant += 1
@@ -78,7 +78,7 @@ while rep.lower() == 's':
                 break
             except ValueError:
                 print("Erro! Digite um número!")
-            continue
+                continue
         
     rep = input("Deseja cadastrar um novo atleta?(S/N): ")
 
@@ -86,6 +86,13 @@ while rep.lower() == 's':
 
         print("O cadastramento foi encerrado!!!")
 
-print(f"A quantidade de atletas cadastrados é de: {quant}")
-
 # Processamento de dados:
+
+    # A quantidade e a porcentagem de atletas que apresentaram sintomas;
+athletes_symptoms = symptom.count('s') 
+athletes_porcent = (athletes_symptoms * 100) / quant    
+
+# Saida de dados
+
+print(f"A quantidade de atletas cadastrados é de: {quant}")
+print(f"A quantidade de atletas que tiveram sintomas e de {athletes_symptoms}. O que equivale a {athletes_porcent}% do total")

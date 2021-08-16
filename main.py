@@ -19,6 +19,14 @@ rep = 's'
 while rep.lower() == 's':
 
     age = int(input("Digite sua idade: "))
+    while True:
+        try:
+            age = int(input("Digite sua idade: "))
+            break
+        except ValueError:
+            print("Erro! Digite a idade em números! ")
+            continue
+
     gender = input("Digite seu sexo (M/F): ")
     fever = input("Teve febre (S/N): ")
 

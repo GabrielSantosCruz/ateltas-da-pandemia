@@ -18,7 +18,7 @@ quant = 0
 
 while rep.lower() == 's':
     quant += 1
-    age = int(input("Digite sua idade: "))
+
     while True:
         try:
             age = int(input("Digite sua idade: "))
@@ -31,9 +31,11 @@ while rep.lower() == 's':
     fever = input("Teve febre (S/N): ")
 
     if fever.lower() == 's':
-        temperatura = float(input("Qual foi a maior temperatura detectada"))
+        temperatura = float(input("Qual foi a maior temperatura detectada: "))
 
     else:
+        symp_quant = 0
+        symp_quant += 1
         symptom = input("Teve algum sintoma (S/N): ")
 
     kit = input("Tomou o kit Covid ao retornar ao Brasil (S/N): ")
@@ -55,6 +57,16 @@ while rep.lower() == 's':
         print("O cadastramento foi encerrado!!!")
 
 # Processamento de dados:
-# Saída de dados:
+percent_symp = float((100 * symp_quant) / quant) # procentagem dos sintomáticos
 
-print(f"A quantidade de atletas cadastrados é de {quant}")
+
+# Saída de dados:
+   
+    # Quantidade de atletas monitorados;
+print(f"A quantidade de atletas monitorados é de {quant}!")
+
+    # A quantidade e a porcentagem de atletas que apresentaram sintomas;
+
+print(f"A quantidade de atletas que apresentam sintomas é de {symp_quant}.\n O que equivale a {percent_symp}% do total!" )
+
+    # Idade média de todos os atletas, dos atletas sem sintomas, e dos atletas sintomáticos;

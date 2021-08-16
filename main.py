@@ -14,14 +14,14 @@ print("Sistema UEFS pelos atletas\n")
 
 rep = 's'
 quant = 0
-# Se eu digitar um numero em vez de uma string e dar erro?
+age = 0
 
 while rep.lower() == 's':
     quant += 1
 
     while True:
         try:
-            age = int(input("Digite sua idade: "))
+            age += int(input("Digite sua idade: "))
             break
         except ValueError:
             print("Erro! Digite a idade em números! ")
@@ -58,7 +58,7 @@ while rep.lower() == 's':
 
 # Processamento de dados:
 percent_symp = float((100 * symp_quant) / quant) # procentagem dos sintomáticos
-
+middle_age = float(age / quant) # Idade média dos atletas
 
 # Saída de dados:
    
@@ -67,6 +67,7 @@ print(f"A quantidade de atletas monitorados é de {quant}!")
 
     # A quantidade e a porcentagem de atletas que apresentaram sintomas;
 
-print(f"A quantidade de atletas que apresentam sintomas é de {symp_quant}.\n O que equivale a {percent_symp}% do total!" )
+print(f"A quantidade de atletas que apresentam sintomas é de {symp_quant}.\nO que equivale a {round(percent_symp, 2)}% do total!" )
 
     # Idade média de todos os atletas, dos atletas sem sintomas, e dos atletas sintomáticos;
+print(f"A idade média dos atletas cadastrados é {round(middle_age, 2)}!")

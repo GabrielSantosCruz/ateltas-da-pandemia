@@ -19,7 +19,7 @@ symptom_age = 0
 symp_quant = 0
 assymptom_age = 0
 assymptom_quant = 0
-
+total_age = 0
 while rep.lower() == 's':
     quant += 1
 
@@ -52,8 +52,9 @@ while rep.lower() == 's':
             symp_quant += 1
             symptom_age += age
         else:
-            assymptom_age = age 
             assymptom_quant  += 1
+            assymptom_age += age 
+            
 
     kit = input("Tomou o kit Covid ao retornar ao Brasil (S/N): ")
 
@@ -96,7 +97,8 @@ while rep.lower() == 's':
 # Processamento de dados:
 percent_symp = float((100 * symp_quant) / quant) # procentagem dos sintomáticos
 middle_age = float(total_age / quant) # Idade média dos atletas
-symp_age_middle = float(symptom_age / symp_quant)
+symp_age_middle = float(symptom_age / symp_quant) # Idade média dos sintomáticos
+assymptom_age_middle = float(assymptom_age / assymptom_quant) # Idade média dos assintomáticos
 
 # Saída de dados:
    
@@ -108,5 +110,4 @@ print(f"A quantidade de atletas monitorados é de {quant}!")
 print(f"A quantidade de atletas que apresentam sintomas é de {symp_quant}.\nO que equivale a {round(percent_symp, 2)}% do total!" )
 
     # Idade média de todos os atletas, dos atletas sem sintomas, e dos atletas sintomáticos;
-print(f"A idade média dos atletas cadastrados é {round(middle_age, 2)}!\nSendo {round(symp_age_middle, 2)} a media dos simtomáticos")
-print(symptom_age, symp_quant)
+print(f"A idade média dos atletas cadastrados é {round(middle_age, 2)}!\nSendo {round(symp_age_middle, 2)} a media dos sintomáticos\nE {assymptom_age_middle} a dos assintomáticos")

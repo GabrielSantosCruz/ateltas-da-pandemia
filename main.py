@@ -18,13 +18,15 @@ age = 0
 symptom_age = 0
 symp_quant = 0
 assymptom_age = 0
+assymptom_quant = 0
 
 while rep.lower() == 's':
     quant += 1
 
     while True:
         try:
-            age += int(input("Digite sua idade: "))
+            age = int(input("Digite sua idade: "))
+            total_age += age
             break
         except ValueError:
             print("Erro! Digite a idade em números! ")
@@ -34,7 +36,13 @@ while rep.lower() == 's':
     fever = input("Teve febre (S/N): ")
 
     if fever.lower() == 's':
-        temperatura = float(input("Qual foi a maior temperatura detectada: "))
+        while True:
+            try:
+                temperatura = float(input("Qual foi a maior temperatura detectada: "))
+                break
+            except ValueError:
+                print("Digite a temperatura me números! ")
+                continue
 
     else:
         symptom = input("Teve algum sintoma (S/N): ")
@@ -44,7 +52,8 @@ while rep.lower() == 's':
             symp_quant += 1
             symptom_age += age
         else:
-            assymptom_age += age 
+            assymptom_age = age 
+            assymptom_quant  += 1
 
     kit = input("Tomou o kit Covid ao retornar ao Brasil (S/N): ")
 
@@ -54,9 +63,29 @@ while rep.lower() == 's':
 
     if medal.lower() == 's':
 
-        gold = int(input("Quantas medalhas de ouro?: "))
-        silver = int(input("Quantas medalhas de prata?: "))
-        bronze = int(input("Quantas medalhas de bronze?: "))
+        while True:
+            try:
+                gold = int(input("Quantas medalhas de ouro?: "))
+                break
+            except ValueError:
+                print("Digite a quantidade de medalhas em números! ")
+                continue
+        
+        while True:
+            try:
+                silver = int(input("Quantas medalhas de prata?: "))
+                break
+            except ValueError:
+                 print("Digite a quantidade de medalhas em números! ")
+                 continue
+        
+        while True:
+            try:
+                bronze = int(input("Quantas medalhas de bronze?: "))
+                break
+            except ValueError:
+                print("Digite a quantidade de medalhas em números! ")
+                continue
     
     rep = input("Deseja cadastrar um novo atleta?(S/N): ")
 
@@ -66,7 +95,7 @@ while rep.lower() == 's':
 
 # Processamento de dados:
 percent_symp = float((100 * symp_quant) / quant) # procentagem dos sintomáticos
-middle_age = float(age / quant) # Idade média dos atletas
+middle_age = float(total_age / quant) # Idade média dos atletas
 symp_age_middle = float(symptom_age / symp_quant)
 
 # Saída de dados:

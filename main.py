@@ -20,6 +20,9 @@ symp_quant = 0
 assymptom_age = 0
 assymptom_quant = 0
 total_age = 0
+temperature1 = 0
+symp_age_middle = 0
+assymptom_age_middle = 0
 while rep.lower() == 's':
     quant += 1
 
@@ -38,7 +41,7 @@ while rep.lower() == 's':
     if fever.lower() == 's':
         while True:
             try:
-                temperatura = float(input("Qual foi a maior temperatura detectada: "))
+                temperature = float(input("Qual foi a maior temperatura detectada: "))
                 break
             except ValueError:
                 print("Digite a temperatura me números! ")
@@ -97,9 +100,14 @@ while rep.lower() == 's':
 # Processamento de dados:
 percent_symp = float((100 * symp_quant) / quant) # procentagem dos sintomáticos
 middle_age = float(total_age / quant) # Idade média dos atletas
-symp_age_middle = float(symptom_age / symp_quant) # Idade média dos sintomáticos
-assymptom_age_middle = float(assymptom_age / assymptom_quant) # Idade média dos assintomáticos
 
+    # se o atleta tiver febre e não forem preenchidos estes dados da erro de ZerodivisionError
+if fever == 'n':
+    symp_age_middle = float(symptom_age / symp_quant) # Idade média dos sintomáticos
+    assymptom_age_middle = float(assymptom_age / assymptom_quant) # Idade média dos assintomáticos
+
+if temperature > temperature1: # temperatura máxima
+    temperature1 = temperature
 # Saída de dados:
    
     # Quantidade de atletas monitorados;
@@ -111,3 +119,6 @@ print(f"A quantidade de atletas que apresentam sintomas é de {symp_quant}.\nO q
 
     # Idade média de todos os atletas, dos atletas sem sintomas, e dos atletas sintomáticos;
 print(f"A idade média dos atletas cadastrados é {round(middle_age, 2)}!\nSendo {round(symp_age_middle, 2)} a media dos sintomáticos\nE {assymptom_age_middle} a dos assintomáticos")
+
+    # A temperatura corporal mais alta relatada;
+print(f"A maior temperatura registrada foi de {temperature1}!")

@@ -59,7 +59,11 @@ while rep.lower() == 's':
         else:
             assymptom_quant  += 1
             assymptom_age += age 
-            
+           
+    if min_age > age: # sempre dando a maior
+        min_age = age
+    elif age > max_age: # sempre 0 
+        max_age = age
 
     kit = input("Tomou o kit Covid ao retornar ao Brasil (S/N): ")
 
@@ -106,18 +110,14 @@ middle_age = float(total_age / quant) # Idade média dos atletas
     # se o atleta tiver febre e não forem preenchidos estes dados da erro de ZerodivisionError
 if fever == 'n':
     symp_age_middle = float(symptom_age / symp_quant) # Idade média dos sintomáticos
-    
+
 if symptom == 'n':    
     assymptom_age_middle = float(assymptom_age / assymptom_quant) # Idade média dos assintomáticos
 
 if temperature > temperature1: # temperatura máxima
     temperature1 = temperature
 
-if symptom == 's': # Idade máxima e mínima dos sintomáticos
-    if min_age > age:
-        min_age = age
-    elif age > max_age:
-        max_age = age
+
 
 
 # Saída de dados:

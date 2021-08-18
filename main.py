@@ -20,9 +20,13 @@ symp_quant = 0
 assymptom_age = 0
 assymptom_quant = 0
 total_age = 0
+temperature = 0
 temperature1 = 0
 symp_age_middle = 0
 assymptom_age_middle = 0
+max_age = 0
+min_age = 1000
+
 while rep.lower() == 's':
     quant += 1
 
@@ -50,8 +54,6 @@ while rep.lower() == 's':
     else:
         symptom = input("Teve algum sintoma (S/N): ")
         if symptom.lower() == 's':
-            # tá adicionando a primeira idade digitada mais uma vez ao total
-            # se já foi cadastrada alguma idade antes, ela é somada ao cadastrar alguém sintomático
             symp_quant += 1
             symptom_age += age
         else:
@@ -104,10 +106,20 @@ middle_age = float(total_age / quant) # Idade média dos atletas
     # se o atleta tiver febre e não forem preenchidos estes dados da erro de ZerodivisionError
 if fever == 'n':
     symp_age_middle = float(symptom_age / symp_quant) # Idade média dos sintomáticos
+    
+if symptom == 'n':    
     assymptom_age_middle = float(assymptom_age / assymptom_quant) # Idade média dos assintomáticos
 
 if temperature > temperature1: # temperatura máxima
     temperature1 = temperature
+
+if symptom == 's': # Idade máxima e mínima dos sintomáticos
+    if min_age > age:
+        min_age = age
+    elif age > max_age:
+        max_age = age
+
+
 # Saída de dados:
    
     # Quantidade de atletas monitorados;
@@ -121,4 +133,10 @@ print(f"A quantidade de atletas que apresentam sintomas é de {symp_quant}.\nO q
 print(f"A idade média dos atletas cadastrados é {round(middle_age, 2)}!\nSendo {round(symp_age_middle, 2)} a media dos sintomáticos\nE {assymptom_age_middle} a dos assintomáticos")
 
     # A temperatura corporal mais alta relatada;
-print(f"A maior temperatura registrada foi de {temperature1}!")
+if temperature > 0:
+    print(f"A maior temperatura registrada foi de {temperature1}!")
+elif temperature == 0:
+    print("Não houveram atletas com febre!")
+
+    # Dentre os que apresentaram sintomas, a idade do atleta mais novo e do atleta mais velho;
+print(f"Dentre os sintomáticos, a idade do atleta mais novo foi de {min_age} e do atleta mais velho {max_age}!")

@@ -26,21 +26,22 @@ symp_age_middle = 0
 assymptom_age_middle = 0
 max_age = 0
 min_age = 1000
+kit_covid = 0
 
 while rep.lower() == 's':
     quant += 1
 
-    while True:
-        try:
-            age = int(input("Digite sua idade: "))
-            total_age += age
-            break
-        except ValueError:
-            print("Erro! Digite a idade em números! ")
-            continue
 
-    gender = input("Digite seu sexo (M/F): ")
-    fever = input("Teve febre (S/N): ")
+    age = int(input("Digite sua idade: "))
+    total_age += age
+
+
+    gender = str(input("Digite seu sexo (M/F): ")).lower()
+    while gender not in 'mf':
+        gender = str(input("Erro! Digite M ou F: "))
+    fever = str(input("Teve febre (S/N): ")).lower()
+    while fever not in 'sn':
+        fever = str(input("Erro! Digite S ou N: "))
 
     if fever.lower() == 's':
         while True:
@@ -52,22 +53,30 @@ while rep.lower() == 's':
                 continue
 
     else:
-        symptom = input("Teve algum sintoma (S/N): ")
+        symptom = str(input("Teve algum sintoma (S/N): ")).lower()
+        while symptom not in 'sn':
+            symptom = str(input("Erro! Digite S ou N: "))
         if symptom.lower() == 's':
             symp_quant += 1
             symptom_age += age
         else:
             assymptom_quant  += 1
             assymptom_age += age 
-           
-    if min_age > age: # sempre dando a maior
-        min_age = age
-    elif age > max_age: # sempre 0 
-        max_age = age
+    if symptom == 's':   
+        if min_age > age: # sempre dando a maior
+            min_age = age
+        elif age > max_age: # sempre 0 
+            max_age = age
 
-    kit = input("Tomou o kit Covid ao retornar ao Brasil (S/N): ")
+    kit = str(input("Tomou o kit Covid ao retornar ao Brasil (S/N): ")).lower()
+    while kit not in 'sn':
+        kit = str(input("Erro! Digite S ou N: "))
+    if kit == 's':
+        kit_covid += 1
 
     medal = input("Ganhou alguma medalha? (S/N): ")
+    while medal not in 'sn':
+        medal = str(input("Erro! Digite S ou N: "))
     
 # Calcular a quantidade de medalhas e qual o seu tipo (Ouro, Prata, Bronze)
 
@@ -97,8 +106,9 @@ while rep.lower() == 's':
                 print("Digite a quantidade de medalhas em números! ")
                 continue
     
-    rep = input("Deseja cadastrar um novo atleta?(S/N): ")
-
+    rep = str(input("Deseja cadastrar um novo atleta?(S/N): ")).lower()
+    while rep not in 'sn':
+        rep = str(input("Erro! Digite S ou N: "))
     if rep.lower() == 'n':
 
         print("O cadastramento foi encerrado!!!")
@@ -108,7 +118,7 @@ percent_symp = float((100 * symp_quant) / quant) # procentagem dos sintomáticos
 middle_age = float(total_age / quant) # Idade média dos atletas
 
     # se o atleta tiver febre e não forem preenchidos estes dados da erro de ZerodivisionError
-if fever == 'n':
+if (fever == 'n') and (symp_quant > 0) and (symptom == 's'):
     symp_age_middle = float(symptom_age / symp_quant) # Idade média dos sintomáticos
 
 if symptom == 'n':    
@@ -139,4 +149,10 @@ elif temperature == 0:
     print("Não houveram atletas com febre!")
 
     # Dentre os que apresentaram sintomas, a idade do atleta mais novo e do atleta mais velho;
-print(f"Dentre os sintomáticos, a idade do atleta mais novo foi de {min_age} e do atleta mais velho {max_age}!")
+if symptom == 's':
+    print(f"Dentre os sintomáticos, a idade do atleta mais novo foi de {min_age} e do atleta mais velho {max_age}!")
+else:
+    print("Nou houveram atletas com sintomas!")
+    # Um recorte por gênero dos atletas que tomaram o “kit COVID”, indicando ainda, dentre estes, a  
+    # quantidade de homens e mulheres que tiveram ou não sintomas;
+    

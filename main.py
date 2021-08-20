@@ -31,8 +31,13 @@ kit_covid = 0
 while rep.lower() == 's':
     quant += 1
 
+    try:
+        age = int(input("Digite sua idade: "))
+    except:
+        age = int(input("Erro! Digite uma idade válida: "))
+    while (age < 10) or (age > 100): #or Exception():
 
-    age = int(input("Digite sua idade: "))
+        age = int(input("Erro! Digite uma idade válida: "))
     total_age += age
 
 
@@ -82,29 +87,26 @@ while rep.lower() == 's':
 
     if medal.lower() == 's':
 
-        while True:
-            try:
-                gold = int(input("Quantas medalhas de ouro?: "))
-                break
-            except ValueError:
-                print("Digite a quantidade de medalhas em números! ")
-                continue
-        
-        while True:
-            try:
-                silver = int(input("Quantas medalhas de prata?: "))
-                break
-            except ValueError:
-                 print("Digite a quantidade de medalhas em números! ")
-                 continue
-        
-        while True:
-            try:
-                bronze = int(input("Quantas medalhas de bronze?: "))
-                break
-            except ValueError:
-                print("Digite a quantidade de medalhas em números! ")
-                continue
+        try:
+            gold = int(input("Quantas medalhas de ouro?: "))
+        except:
+            gold = int(input("Erro! Quantas medalhas de ouro?: "))
+        while gold <= 0:
+            gold = int(input("Erro! Quantas medalhas de ouro?: "))
+
+        try:
+            silver = int(input("Quantas medalhas de prata?: "))
+        except:
+            silver = int(input("Erro! Quantas medalhas de prata?: "))
+        while silver <= 0:
+            silver = int(input("Erro! Quantas medalhas de prata?: "))
+                   
+        try:
+            bronze = int(input("Quantas medalhas de bronze?: "))
+        except:
+            bronze = int(input("Erro! Quantas medalhas de bronze?: "))
+        while bronze <=0:
+            bronze = int(input("Erro! Quantas medalhas de bronze?: "))
     
     rep = str(input("Deseja cadastrar um novo atleta?(S/N): ")).lower()
     while rep not in 'sn':

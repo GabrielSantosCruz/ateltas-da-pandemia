@@ -31,6 +31,10 @@ masculine = 0
 feminine = 0
 masc_kit = 0
 fem_kit = 0
+masc_symp = 0
+fem_symp = 0
+masc_assymp = 0
+fem_assymp = 0
 
 while rep.lower() == 's':
     quant += 1
@@ -71,9 +75,19 @@ while rep.lower() == 's':
         if symptom == 's':
             symp_quant += 1
             symptom_age += age
+            if gender == 'm':
+                masc_symp += 1
+            if gender == 'f':
+                fem_symp += 1
+
         else:
             assymptom_quant  += 1
             assymptom_age += age 
+            if gender == 'm':
+                masc_assymp += 1
+            if gender == 'f':
+                fem_assymp += 1
+
     if symptom == 's':   
         if min_age > age: # sempre dando a maior
             min_age = age
@@ -173,5 +187,9 @@ else:
     # destes, quantos homens e mulheres tiveram sintomas. E quantos não tiveram;
 if kit_covid > 0:
     print(f"A quantidade de homens que tomaram o Kit Covid foi de {masc_kit} e a de mulheres {fem_kit}! ")
+    if symp_quant > 0:
+        print(f"Dentre estes, {masc_symp} homens e {fem_symp} mulheres tiveram sintomas!")
+    if assymptom_quant > 0:    
+        print(f"Dentre estes, {masc_assymp} homens e {fem_assymp} não tiveram sintomas!")
 else: 
     print("Nenhum atleta tomou o kit covid! ")

@@ -27,6 +27,10 @@ assymptom_age_middle = 0
 max_age = 0
 min_age = 1000
 kit_covid = 0
+masculine = 0
+feminine = 0
+masc_kit = 0
+fem_kit = 0
 
 while rep.lower() == 's':
     quant += 1
@@ -36,7 +40,6 @@ while rep.lower() == 's':
     except:
         age = int(input("Erro! Digite uma idade válida: "))
     while (age < 10) or (age > 100): #or Exception():
-
         age = int(input("Erro! Digite uma idade válida: "))
     total_age += age
 
@@ -47,6 +50,10 @@ while rep.lower() == 's':
     fever = str(input("Teve febre (S/N): ")).lower()
     while fever not in 'sn':
         fever = str(input("Erro! Digite S ou N: "))
+        if gender == 'm':
+            masculine += 1
+        if gender == 'f':
+            feminine += 1
 
     if fever.lower() == 's':
         while True:
@@ -61,7 +68,7 @@ while rep.lower() == 's':
         symptom = str(input("Teve algum sintoma (S/N): ")).lower()
         while symptom not in 'sn':
             symptom = str(input("Erro! Digite S ou N: "))
-        if symptom.lower() == 's':
+        if symptom == 's':
             symp_quant += 1
             symptom_age += age
         else:
@@ -78,6 +85,10 @@ while rep.lower() == 's':
         kit = str(input("Erro! Digite S ou N: "))
     if kit == 's':
         kit_covid += 1
+        if gender == 'm':
+            masc_kit += 1
+        if gender == 'f':
+            fem_kit += 1
 
     medal = input("Ganhou alguma medalha? (S/N): ")
     while medal not in 'sn':
@@ -116,7 +127,8 @@ while rep.lower() == 's':
         print("O cadastramento foi encerrado!!!")
 
 # Processamento de dados:
-percent_symp = float((100 * symp_quant) / quant) # procentagem dos sintomáticos
+
+    # procentagem dos sintomáticos
 middle_age = float(total_age / quant) # Idade média dos atletas
 
     # se o atleta tiver febre e não forem preenchidos estes dados da erro de ZerodivisionError
@@ -129,8 +141,7 @@ if symptom == 'n':
 if temperature > temperature1: # temperatura máxima
     temperature1 = temperature
 
-
-
+percent_symp = float((100 * symp_quant) / quant) # procentagem dos sintomáticos
 
 # Saída de dados:
    
@@ -154,7 +165,13 @@ elif temperature == 0:
 if symptom == 's':
     print(f"Dentre os sintomáticos, a idade do atleta mais novo foi de {min_age} e do atleta mais velho {max_age}!")
 else:
-    print("Nou houveram atletas com sintomas!")
-    # Um recorte por gênero dos atletas que tomaram o “kit COVID”, indicando ainda, dentre estes, a  
-    # quantidade de homens e mulheres que tiveram ou não sintomas;
+    print("Não houveram atletas com sintomas!")
     
+    '''Um recorte por gênero dos atletas que tomaram o “kit COVID”, indicando ainda, dentre estes, a  
+    quantidade de homens e mulheres que tiveram ou não sintomas;'''
+    # quantos homens e mulheres tomaram o kit covid;
+    # destes, quantos homens e mulheres tiveram sintomas. E quantos não tiveram;
+if kit_covid > 0:
+    print(f"A quantidade de homens que tomaram o Kit Covid foi de {masc_kit} e a de mulheres {fem_kit}! ")
+else: 
+    print("Nenhum atleta tomou o kit covid! ")

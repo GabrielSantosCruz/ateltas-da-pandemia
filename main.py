@@ -51,21 +51,25 @@ fem_bronze = 0
 while rep.lower() == 's':
     quant += 1
 
-    try:
-        age = int(input("Digite sua idade: "))
-    except:
+    age = input("Digite a idade do atleta: ")
+    while not age.isdigit(): # valida se é um número
+        print("Erro! Digite apenas números!")
+        age = input("Digite a idade do atleta: ")
+    age = int(age) # transforma em int
+    while (age < 10) or (age > 100): # valida se a idade é valida
         age = int(input("Erro! Digite uma idade válida: "))
-    while (age < 10) or (age > 100): #or Exception():
-        age = int(input("Erro! Digite uma idade válida: "))
+    '''caso digite uma idade válida como número ela passa pela primeira verificação,
+        porém se for uma idade inválida caem na segunda verificação. e se digitar uma 
+        string nesse momento ele cracha'''
     total_age += age
 
 
-    gender = str(input("Digite seu sexo (M/F): ")).lower()
+    gender = str(input("Digite seu sexo (M/F): ")).lower().strip()
     while gender not in 'mf':
-        gender = str(input("Erro! Digite M ou F: "))
+        gender = str(input("Erro! Digite M ou F: ")).lower()
     fever = str(input("Teve febre (S/N): ")).lower()
     while fever not in 'sn':
-        fever = str(input("Erro! Digite S ou N: "))
+        fever = str(input("Erro! Digite S ou N: ")).lower()
         if gender == 'm':
             masculine += 1
         if gender == 'f':
@@ -83,7 +87,7 @@ while rep.lower() == 's':
     else:
         symptom = str(input("Teve algum sintoma (S/N): ")).lower()
         while symptom not in 'sn':
-            symptom = str(input("Erro! Digite S ou N: "))
+            symptom = str(input("Erro! Digite S ou N: ")).lower()
         if symptom == 's':
             symp_quant += 1
             symptom_age += age
@@ -108,7 +112,7 @@ while rep.lower() == 's':
 
     kit = str(input("Tomou o kit Covid ao retornar ao Brasil (S/N): ")).lower()
     while kit not in 'sn':
-        kit = str(input("Erro! Digite S ou N: "))
+        kit = str(input("Erro! Digite S ou N: ")).lower()
     if kit == 's':
         kit_covid += 1
         
@@ -118,13 +122,13 @@ while rep.lower() == 's':
         if gender == 'f':
             fem_kit += 1
 
-    medal = input("Ganhou alguma medalha? (S/N): ")
+    medal = input("Ganhou alguma medalha? (S/N): ").lower()
     while medal not in 'sn':
-        medal = str(input("Erro! Digite S ou N: "))
+        medal = str(input("Erro! Digite S ou N: ")).lower()
     
 # Calcular a quantidade de medalhas e qual o seu tipo (Ouro, Prata, Bronze)
 
-    if medal.lower() == 's':
+    if medal == 's':
         print("Digite a quantidade de medalhas em números. Caso não tenha ganhado nenhuma de um tipo apenas digite 0!")
         # quantidade de homens e mulheres que ganharam medalhas:
         if gender == 'm': 
@@ -255,3 +259,10 @@ if medal == 's':
     print(f"As mulheres ganharam: {fem_gold} medalhas de ouro, {fem_silver} medalhas de prata e {fem_bronze} medalhas de bronze! ")
 else:
     print("Nenhum atleta ganhou medalha! ")
+
+    # organizar melhor as saídas de dados
+    # conferir possíveis erros
+    # conferir a verificação de dados
+        # as strings estão deixando passar se apenas digitar enter
+        # não consegui as de numeros ainda
+    # adicionar opção de voltar a pergunta anterior?    

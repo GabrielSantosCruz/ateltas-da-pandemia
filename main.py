@@ -10,8 +10,10 @@
 #******************************************************************************************/
 
 # Entrada de dados:
+print('=' * 30)
 print("Sistema UEFS pelos atletas\n")
-
+print('=' * 30)
+print("Inicio do cadastramento dos atletas!")
 rep = 's'
 quant = 0
 age = 0
@@ -76,14 +78,11 @@ while rep.lower() == 's':
             feminine += 1
 
     if fever.lower() == 's':
-        while True:
-            try:
-                temperature = float(input("Qual foi a maior temperatura detectada: "))
-                break
-            except ValueError:
-                print("Digite a temperatura me números! ")
-                continue
 
+        temperature = float(input("Qual foi a maior temperatura detectada: "))
+        while temperatura < 37.8:
+            print('Erro! digite uma temperatura válida!')
+            temperature = float(input("Qual foi a maior temperatura detectada: "))
     else:
         symptom = str(input("Teve algum sintoma (S/N): ")).lower()
         while symptom not in 'sn':
@@ -206,7 +205,9 @@ if temperature > temperature1: # temperatura máxima
 percent_symp = float((100 * symp_quant) / quant) # procentagem dos sintomáticos
 
 # Saída de dados:
-   
+print('=' * 30)
+print("Relatório de dados: ")
+print('=' * 30)
     # Quantidade de atletas monitorados;
 print(f"A quantidade de atletas monitorados é de {quant}!")
 

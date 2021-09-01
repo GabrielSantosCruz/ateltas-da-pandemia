@@ -7,6 +7,7 @@
 #apostilas, e páginas ou documentos eletrônicos da Internet. Qualquer trecho de código
 #de outra autoria que não a minha está destacado com uma citação para o autor e a fonte
 #do código, e estou ciente que estes trechos não serão considerados para fins de avaliação.
+# O própio e sua evolução pode ser encontrado em: https://github.com/GabrielSantosCruz/atletas-na-pandemia
 #******************************************************************************************/
 
 # Entrada de dados:
@@ -15,6 +16,7 @@ print("Sistema UEFS pelos atletas")
 print('=' * 30)
 print("\nInicio do cadastramento dos atletas!\n")
 rep = 's'
+symptom = 'n'
 quant = 0
 age = 0
 symptom_age = 0
@@ -80,9 +82,19 @@ while rep.lower() == 's':
     if fever.lower() == 's':
 
         temperature = float(input("Qual foi a maior temperatura detectada: "))
-        while temperature < 37.8:
-            print('Erro, isso não é cnsiderado febre! digite uma temperatura válida!')
+        while temperature < 0:
+            print('Erro! digite uma temperatura válida!')
             temperature = float(input("Qual foi a maior temperatura detectada: "))
+        if temperature < 37.7: # da erro na variavel symptom por conta do else na linha 96
+            print('Isso não é considerado febre')
+            fever = str(input("Teve febre (S/N): ")).lower()
+            while fever not in 'sn':
+                fever = str(input("Erro! Digite S ou N: ")).lower()
+                if gender == 'm':
+                    masculine += 1
+                if gender == 'f':
+                    feminine += 1
+
     else:
         symptom = str(input("Teve algum sintoma (S/N): ")).lower()
         while symptom not in 'sn':
@@ -103,11 +115,6 @@ while rep.lower() == 's':
             if gender == 'f':
                 fem_assymp += 1
 
-    if symptom == 's':   
-        if min_age > age: # sempre dando a maior
-            min_age = age
-        elif age > max_age: # sempre 0 
-            max_age = age
 
     kit = str(input("Tomou o kit Covid ao retornar ao Brasil (S/N): ")).lower()
     while kit not in 'sn':
@@ -202,6 +209,13 @@ if symptom == 'n':
 if temperature > temperature1: # temperatura máxima
     temperature1 = temperature
 
+if symptom == 's':   
+    if min_age > age: # sempre dando a maior
+        min_age = age
+    elif age > max_age: # sempre 0 
+        max_age = age
+
+
 percent_symp = float((100 * symp_quant) / quant) # procentagem dos sintomáticos
 
 # Saída de dados:
@@ -226,7 +240,8 @@ elif temperature == 0:
 
     # Dentre os que apresentaram sintomas, a idade do atleta mais novo e do atleta mais velho;
 if symptom == 's':
-    print(f"Dentre os sintomáticos, a idade do atleta mais novo foi de {min_age} e do atleta mais velho {max_age}!")
+    print(f"Dentre os sintomáticos, a idade do atleta mais novo foi de {min_age} e do atleta mais velho {max_age}!") 
+    # caso só tenha um atleta a idade digitada vai para o mais novo e o mais velho fica com 0
 else:
     print("Não houveram atletas com sintomas!")
     

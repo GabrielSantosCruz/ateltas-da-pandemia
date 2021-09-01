@@ -11,9 +11,9 @@
 
 # Entrada de dados:
 print('=' * 30)
-print("Sistema UEFS pelos atletas\n")
+print("Sistema UEFS pelos atletas")
 print('=' * 30)
-print("Inicio do cadastramento dos atletas!")
+print("\nInicio do cadastramento dos atletas!\n")
 rep = 's'
 quant = 0
 age = 0
@@ -80,8 +80,8 @@ while rep.lower() == 's':
     if fever.lower() == 's':
 
         temperature = float(input("Qual foi a maior temperatura detectada: "))
-        while temperatura < 37.8:
-            print('Erro! digite uma temperatura válida!')
+        while temperature < 37.8:
+            print('Erro, isso não é cnsiderado febre! digite uma temperatura válida!')
             temperature = float(input("Qual foi a maior temperatura detectada: "))
     else:
         symptom = str(input("Teve algum sintoma (S/N): ")).lower()
@@ -192,7 +192,7 @@ while rep.lower() == 's':
     # procentagem dos sintomáticos
 middle_age = float(total_age / quant) # Idade média dos atletas
 
-    # se o atleta tiver febre e não forem preenchidos estes dados da erro de ZerodivisionError
+    # se o atleta tiver febre e não forem preenchidos estes dados da erro de ZerodivisionError (corrigido)
 if (fever == 'n') and (symp_quant > 0) and (symptom == 's'):
     symp_age_middle = float(symptom_age / symp_quant) # Idade média dos sintomáticos
 

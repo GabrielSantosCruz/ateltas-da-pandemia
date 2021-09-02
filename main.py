@@ -59,8 +59,8 @@ while rep.lower() == 's':
     while not age.isdigit() or (int(age) < 10 or int(age) > 100): # valida se é um número
         print("Erro! Digite uma idade válida")
         age = input("Digite a idade do atleta: ")
-
-    total_age += age
+    age = int(age)
+    total_age += int(age)
 
 
     gender = str(input("Digite seu sexo (M/F): ")).lower().strip()
@@ -149,38 +149,30 @@ while rep.lower() == 's':
             if medal == 'f':
                 medal_fem_assymp += 1 
 
-        try:
-            gold = int(input("Quantas medalhas de ouro?: "))
-        except:
-            gold = int(input("Erro! Quantas medalhas de ouro?: "))
-        while gold < 0:
-            gold = int(input("Erro! Quantas medalhas de ouro?: "))
-            if gender == 'm': 
-                masc_gold += 1
-            if medal == 'f':
-                fem_gold += 1             
+        # Conferir as saídas de medalhas
+        gold = input("Quantas medalhas de ouro?: ")
+        while not gold.isdigit() or (int(gold) < 0):
+            gold = input("Erro! Quantas medalhas de ouro?: ")
+        if gender == 'm': 
+            masc_gold += int(gold)
+        if gender == 'f':
+            fem_gold += int(gold)            
 
-        try:
-            silver = int(input("Quantas medalhas de prata?: "))
-        except:
-            silver = int(input("Erro! Quantas medalhas de prata?: "))
-        while silver < 0:
-            silver = int(input("Erro! Quantas medalhas de prata?: "))
-            if gender == 'm': 
-                masc_silver += 1
-            if medal == 'f':
-                fem_silver += 1 
+        silver = input("Quantas medalhas de prata?: ")
+        while not silver.isdigit() or (int(silver) < 0):
+            silver = input("Erro! Quantas medalhas de prata?: ")
+        if gender == 'm': 
+            masc_silver += int(silver)
+        if gender == 'f':
+            fem_silver += int(silver)
 
-        try:
-            bronze = int(input("Quantas medalhas de bronze?: "))
-        except:
-            bronze = int(input("Erro! Quantas medalhas de bronze?: "))
-        while bronze < 0:
-            bronze = int(input("Erro! Quantas medalhas de bronze?: "))
-            if gender == 'm': 
-                masc_bronze += 1
-            if medal == 'f':
-                fem_bronze += 1 
+        bronze = input("Quantas medalhas de bronze?: ")
+        while not bronze.isdigit() or (int(bronze) < 0):
+            bronze = input("Erro! Quantas medalhas de bronze?: ")
+        if gender == 'm': 
+            masc_bronze += int(bronze)
+        if gender == 'f':
+            fem_bronze += int(bronze)
 
     rep = str(input("Deseja cadastrar um novo atleta?(S/N): ")).lower()
     while rep not in 'sn':
@@ -195,7 +187,8 @@ while rep.lower() == 's':
 middle_age = float(total_age / quant) # Idade média dos atletas
 
     # se o atleta tiver febre e não forem preenchidos estes dados da erro de ZerodivisionError (corrigido)
-if (fever == 'n') and (symp_quant > 0) and (symptom == 's'):
+if (symp_quant > 0): # and (symptom == 's'): #and (fever == 'n'):
+    # caso alguem tenha tido febre acaba bugando a idade média dos sintomáticos
     symp_age_middle = float(symptom_age / symp_quant) # Idade média dos sintomáticos
 
 if symptom == 'n':    
@@ -218,14 +211,14 @@ print('=' * 30)
 print("Relatório de dados: ")
 print('=' * 30)
     # Quantidade de atletas monitorados;
-print(f"A quantidade de atletas monitorados é de {quant}!")
+print(f"A quantidade de atletas monitorados é: {quant}!")
 
     # A quantidade e a porcentagem de atletas que apresentaram sintomas;
 
-print(f"A quantidade de atletas que apresentam sintomas é de {symp_quant}.\nO que equivale a {round(percent_symp, 2)}% do total!" )
+print(f"A quantidade de atletas que apresentam sintomas é de {symp_quant}.\nO que equivale a {round(percent_symp, 1)}% do total!" )
 
     # Idade média de todos os atletas, dos atletas sem sintomas, e dos atletas sintomáticos;
-print(f"A idade média dos atletas cadastrados é {round(middle_age, 2)}!\nSendo {round(symp_age_middle, 2)} a media dos sintomáticos\nE {round(assymptom_age_middle, 2)} a dos assintomáticos")
+print(f"A idade média dos atletas cadastrados é {round(middle_age, 1)}!\nSendo {round(symp_age_middle, 2)} a media dos sintomáticos\nE {round(assymptom_age_middle, 2)} a dos assintomáticos")
 
     # A temperatura corporal mais alta relatada;
 if temperature > 0:
@@ -234,7 +227,7 @@ elif temperature == 0:
     print("Não houveram atletas com febre!")
 
     # Dentre os que apresentaram sintomas, a idade do atleta mais novo e do atleta mais velho;
-if symptom == 's':
+if symp_quant > 0: # a condição não pode ser essa
     print(f"Dentre os sintomáticos, a idade do atleta mais novo foi de {min_age} e do atleta mais velho {max_age}!") 
     # caso só tenha um atleta a idade digitada vai para o mais novo e o mais velho fica com 0
 else:
@@ -270,7 +263,7 @@ if medal == 's':
     print(f"As mulheres ganharam: {fem_gold} medalhas de ouro, {fem_silver} medalhas de prata e {fem_bronze} medalhas de bronze! ")
 else:
     print("Nenhum atleta ganhou medalha! ")
-
+print('=' * 30)
     # organizar melhor as saídas de dados
     # conferir possíveis erros
     # conferir a verificação de dados

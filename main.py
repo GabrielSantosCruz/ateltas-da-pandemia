@@ -56,15 +56,10 @@ while rep.lower() == 's':
     quant += 1
 
     age = input("Digite a idade do atleta: ")
-    while not age.isdigit(): # valida se é um número
-        print("Erro! Digite apenas números!")
+    while not age.isdigit() or (int(age) < 10 or int(age) > 100): # valida se é um número
+        print("Erro! Digite uma idade válida")
         age = input("Digite a idade do atleta: ")
-    age = int(age) # transforma em int
-    while (age < 10) or (age > 100): # valida se a idade é valida
-        age = int(input("Erro! Digite uma idade válida: "))
-    '''caso digite uma idade válida como número ela passa pela primeira verificação,
-        porém se for uma idade inválida caem na segunda verificação. e se digitar uma 
-        string nesse momento ele cracha'''
+
     total_age += age
 
 

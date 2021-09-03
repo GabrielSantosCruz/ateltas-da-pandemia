@@ -1,14 +1,14 @@
-#/*******************************************************************************
-#Autor: Gabriel Santos Cruz
-#Componente Curricular: Algoritmos I
-#Concluido em: xx/xx/2021
-#Declaro que este código foi elaborado por mim de forma individual e não contém nenhum
-#trecho de código de outro colega ou de outro autor, tais como provindos de livros e
-#apostilas, e páginas ou documentos eletrônicos da Internet. Qualquer trecho de código
-#de outra autoria que não a minha está destacado com uma citação para o autor e a fonte
-#do código, e estou ciente que estes trechos não serão considerados para fins de avaliação.
-# O própio e sua evolução pode ser encontrado em: https://github.com/GabrielSantosCruz/atletas-na-pandemia
-#******************************************************************************************/
+'''*******************************************************************************
+Autor: Gabriel Santos Cruz
+Componente Curricular: Algoritmos I
+Concluido em: xx/xx/2021
+Declaro que este código foi elaborado por mim de forma individual e não contém nenhum
+trecho de código de outro colega ou de outro autor, tais como provindos de livros e
+apostilas, e páginas ou documentos eletrônicos da Internet. Qualquer trecho de código
+de outra autoria que não a minha está destacado com uma citação para o autor e a fonte
+do código, e estou ciente que estes trechos não serão considerados para fins de avaliação.
+O própio e sua evolução pode ser encontrado em: https://github.com/GabrielSantosCruz/atletas-na-pandemia
+******************************************************************************************/'''
 
 # Entrada de dados:
 print('=' * 30)
@@ -220,7 +220,6 @@ if symptom == 's':
     elif age > max_age: # sempre 0 
         max_age = age
 
-
 percent_symp = float((100 * symp_quant) / quant) # procentagem dos sintomáticos
 
 # Saída de dados:
@@ -283,12 +282,14 @@ else:
     # Mulheres: X mulheres, X com sintomas e X sem sintomas. Um total de X medalhas de ouro, X de prata e X de bronze
 if medal == 's' or (medal_masc > 0) or (medal_fem > 0):
     print(f"Os atletas que ganharam medalhas foram:\n{medal_masc} Homen(s)\n{medal_fem} Mulher(es)")
-    print(f"Destes {medal_masc} Homen(s): {medal_masc_symp} tiveram sintomas e {medal_masc_assymp} não tiveram")
+    print(f"Destes {medal_masc} Homem(ns): {medal_masc_symp} tiveram sintomas e {medal_masc_assymp} não tiveram")
     print(f"Destas {medal_fem} Mulher(es): {medal_fem_symp} tiveram sintomas e {medal_fem_assymp} não tiveram")
-    print(f"Os {medal_masc_symp} Homen(s) sintomático(s) ganharam: {masc_symp_gold} de ouro, {masc_symp_silver} de prata e {masc_symp_bronze} de bronze! ")
-    print(f"Os {medal_masc_assymp} Homen(s) assintomático(s) ganharam: {masc_assymp_gold} de ouro, {masc_assymp_silver} de prata e {masc_assymp_bronze} de bronze! ")
-    print(f"Os homens ganharam: {masc_gold} medalhas de ouro, {masc_silver} medalhas de prata e {masc_bronze} medalhas de bronze! ")
-    print(f"As mulheres ganharam: {fem_gold} medalhas de ouro, {fem_silver} medalhas de prata e {fem_bronze} medalhas de bronze! ")
+    print(f"Os {medal_masc_symp} Homem(ns) sintomático(s) ganharam: {masc_symp_gold} de ouro, {masc_symp_silver} de prata e {masc_symp_bronze} de bronze! ")
+    print(f"Os {medal_masc_assymp} Homem(ns) assintomático(s) ganharam: {masc_assymp_gold} de ouro, {masc_assymp_silver} de prata e {masc_assymp_bronze} de bronze! ")
+    #print(f"Os homens ganharam: {masc_gold} medalhas de ouro, {masc_silver} medalhas de prata e {masc_bronze} medalhas de bronze! ")
+    print(f"As {medal_fem_symp} mulher(es) sintomáticas ganharam: {fem_symp_gold} medalhas de ouro, {fem_symp_silver} medalhas de prata e {fem_symp_bronze} medalhas de bronze! ")
+    print(f"As {medal_fem_assymp} mulher(es) assintomáticas ganharam: {fem_assymp_gold} medalhas de ouro, {fem_assymp_silver} medalhas de prata e {fem_assymp_bronze} medalhas de bronze! ")
+    
     print('-' * 10)
 else:
     print("Nenhum atleta ganhou medalha! ")

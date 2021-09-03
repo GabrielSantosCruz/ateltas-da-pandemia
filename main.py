@@ -235,40 +235,49 @@ print("Relatório de dados: ")
 print('=' * 30)
     # Quantidade de atletas monitorados;
 print(f"A quantidade de atletas monitorados é: {quant}!")
-
+print('-' * 10)
     # A quantidade e a porcentagem de atletas que apresentaram sintomas;
 
-print(f"A quantidade de atletas que apresentam sintomas é de {symp_quant}.\nO que equivale a {round(percent_symp, 1)}% do total!" )
-
+print(f"A quantidade de atletas que apresentam sintomas é: {symp_quant}\nO que equivale a {round(percent_symp, 1)}% do total!" )
+print('-' * 10)
     # Idade média de todos os atletas, dos atletas sem sintomas, e dos atletas sintomáticos;
-print(f"A idade média dos atletas cadastrados é {round(middle_age, 1)}!\nSendo {round(symp_age_middle, 2)} a media dos sintomáticos\nE {round(assymptom_age_middle, 2)} a dos assintomáticos")
-
+print(f"A idade média dos atletas cadastrados é: {round(middle_age, 1)}!\nSendo {round(symp_age_middle, 2)} a media dos sintomáticos\nE {round(assymptom_age_middle, 2)} a dos assintomáticos")
+print('-' * 10)
     # A temperatura corporal mais alta relatada;
 if temperature > 0:
-    print(f"A maior temperatura registrada foi de {temperature1}!")
+    print(f"A maior temperatura de febre registrada é: {temperature1}!")
 elif temperature == 0:
     print("Não houveram atletas com febre!")
-
+print('-' * 10)
     # Dentre os que apresentaram sintomas, a idade do atleta mais novo e do atleta mais velho;
 if symp_quant > 0: # a condição não pode ser essa
-    print(f"Dentre os sintomáticos, a idade do atleta mais novo foi de {min_age} e do atleta mais velho {max_age}!") 
+    print(f"Dentre os sintomáticos, a idade do atleta mais novo foi: {min_age} e do atleta mais velho: {max_age}!")
+    print('-' * 10)
     # caso só tenha um atleta a idade digitada vai para o mais novo e o mais velho fica com 0
 else:
     print("Não houveram atletas com sintomas!")
+    print('-' * 10)
     
     '''Um recorte por gênero dos atletas que tomaram o “kit COVID”, indicando ainda, dentre estes, a  
     quantidade de homens e mulheres que tiveram ou não sintomas;'''
     # quantos homens e mulheres tomaram o kit covid;
         # destes, quantos homens e mulheres tiveram sintomas. E quantos não tiveram;
 if kit_covid > 0:
-    print(f"A quantidade de homens que tomaram o Kit Covid foi de {masc_kit} e a de mulheres {fem_kit}! ")
+    print(f"Os {kit_covid} atletas que tomaram o Kit Covid são:\n{masc_kit} Homens\n{fem_kit} Mulheres")
+    # print(f"A quantidade de homens que tomaram o Kit Covid foi de {masc_kit} e a de mulheres {fem_kit}! ")
     if symp_quant > 0:
-        print(f"Dentre estes, {masc_kit_symp} homens e {fem_kit_symp} mulheres tiveram sintomas!")
+        print(f"Dentre estes, os sintomáticos são:\n{masc_kit_symp} Homens\n{fem_kit_symp} Mulheres")
+    else:
+        print("Dentre estes não houveram sintomáticos!")
     if assymptom_quant > 0:    
-        print(f"Dentre estes, {masc_kit_assymp} homens e {fem_kit_assymp} mulheres não tiveram sintomas!")
+        print(f"Dentre estes, os assíntomáticos são:\n{masc_kit_assymp} Homens\n{fem_kit_assymp} Mulheres")
+    else:
+        print("Dentre estes não houveram assintomáticos!")
+    print('-' * 10)
 else: 
     print("Nenhum atleta tomou o kit covid! ")
-
+    print('-' * 10)
+    
     '''Um recorte por gênero (M/F) e por sintomas (S/N) dos atletas que 
     trouxeram medalhas para casa, especificando a quantidade de medalhas de ouro, prata e bronze.'''
     # Dos que trouxeram medalhas, a quantidade de homens e mulheres;

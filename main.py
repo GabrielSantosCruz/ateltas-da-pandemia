@@ -15,7 +15,7 @@ print('=' * 30)
 print("Sistema UEFS pelos atletas")
 print('=' * 30)
 print("\nInicio do cadastramento dos atletas!\n")
-rep = 's'
+rep = 's' # para dar inicio ao loop
 symptom = 'n'
 quant = 0
 age = 0
@@ -98,26 +98,33 @@ while rep.lower() == 's':
         else:
             if temperature > temperature1: # temperatura máxima
                 temperature1 = temperature
+            symptom = 's'
 
     else:
         symptom = str(input("Teve algum sintoma (S/N): ")).lower()
         while symptom not in 'sn':
             symptom = str(input("Erro! Digite S ou N: ")).lower()
-        if symptom == 's':
-            symp_quant += 1
-            symptom_age += age
-            if gender == 'm':
-                masc_symp += 1
-            if gender == 'f':
-                fem_symp += 1
 
-        else:
-            assymptom_quant  += 1
-            assymptom_age += age 
-            if gender == 'm':
-                masc_assymp += 1
-            if gender == 'f':
-                fem_assymp += 1
+    if symptom == 's': # calcular a maior e a menor idade dentre o sintomáticos   
+        if min_age > age:
+            min_age = age
+        elif age > max_age: 
+            max_age = age
+
+        symp_quant += 1 # quantidade dos atletas sintomáticos
+        symptom_age += age
+        # Recorte por gênero dos atletas que tiveram sintomas
+        if gender == 'm':
+            masc_symp += 1
+        if gender == 'f':
+            fem_symp += 1
+    else:
+        assymptom_quant  += 1
+        assymptom_age += age 
+        if gender == 'm':
+            masc_assymp += 1
+        if gender == 'f':
+            fem_assymp += 1    
 
     kit = str(input("Tomou o kit Covid ao retornar ao Brasil (S/N): ")).lower()
     while kit not in 'sn':

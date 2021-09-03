@@ -259,7 +259,6 @@ else:
         # destes, quantos homens e mulheres tiveram sintomas. E quantos não tiveram;
 if kit_covid > 0:
     print(f"Os {kit_covid} atletas que tomaram o Kit Covid são:\n{masc_kit} Homens\n{fem_kit} Mulheres")
-    # print(f"A quantidade de homens que tomaram o Kit Covid foi de {masc_kit} e a de mulheres {fem_kit}! ")
     if symp_quant > 0:
         print(f"Dentre estes {kit_covid}, os sintomáticos são:\n{masc_kit_symp} Homens\n{fem_kit_symp} Mulheres")
     else:
@@ -281,12 +280,11 @@ else:
     # Homens: X homens, X com sintomas e X sem sintomas. Um total de X medalhas de ouro, X de prata e X de bronze
     # Mulheres: X mulheres, X com sintomas e X sem sintomas. Um total de X medalhas de ouro, X de prata e X de bronze
 if medal == 's' or (medal_masc > 0) or (medal_fem > 0):
-    print(f"Os atletas que ganharam medalhas foram:\n{medal_masc} Homen(s)\n{medal_fem} Mulher(es)")
+    print(f"Os atletas que ganharam medalhas foram:\n{medal_masc} Homem(ns)\n{medal_fem} Mulher(es)")
     print(f"Destes {medal_masc} Homem(ns): {medal_masc_symp} tiveram sintomas e {medal_masc_assymp} não tiveram")
     print(f"Destas {medal_fem} Mulher(es): {medal_fem_symp} tiveram sintomas e {medal_fem_assymp} não tiveram")
     print(f"Os {medal_masc_symp} Homem(ns) sintomático(s) ganharam: {masc_symp_gold} de ouro, {masc_symp_silver} de prata e {masc_symp_bronze} de bronze! ")
     print(f"Os {medal_masc_assymp} Homem(ns) assintomático(s) ganharam: {masc_assymp_gold} de ouro, {masc_assymp_silver} de prata e {masc_assymp_bronze} de bronze! ")
-    #print(f"Os homens ganharam: {masc_gold} medalhas de ouro, {masc_silver} medalhas de prata e {masc_bronze} medalhas de bronze! ")
     print(f"As {medal_fem_symp} mulher(es) sintomáticas ganharam: {fem_symp_gold} medalhas de ouro, {fem_symp_silver} medalhas de prata e {fem_symp_bronze} medalhas de bronze! ")
     print(f"As {medal_fem_assymp} mulher(es) assintomáticas ganharam: {fem_assymp_gold} medalhas de ouro, {fem_assymp_silver} medalhas de prata e {fem_assymp_bronze} medalhas de bronze! ")
     

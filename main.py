@@ -35,6 +35,12 @@ masculine = 0
 feminine = 0
 masc_kit = 0
 fem_kit = 0
+masc_not_kit = 0
+fem_not_kit = 0
+masc_kit_symp = 0
+fem_kit_symp = 0
+masc_kit_assymp = 0
+fem_kit_assymp = 0
 masc_symp = 0
 fem_symp = 0
 masc_assymp = 0
@@ -110,25 +116,32 @@ while rep.lower() == 's':
             if gender == 'f':
                 fem_assymp += 1
 
-
     kit = str(input("Tomou o kit Covid ao retornar ao Brasil (S/N): ")).lower()
     while kit not in 'sn':
         kit = str(input("Erro! Digite S ou N: ")).lower()
     if kit == 's':
         kit_covid += 1
-        
         # quantidade de homens e mulheres que tomaram o kit covid:
         if gender == 'm':
             masc_kit += 1
         if gender == 'f':
             fem_kit += 1
+        if symptom == 's':
+            if gender == 'm':
+                masc_kit_symp +=1
+            if gender == 'f':
+                fem_kit_symp +=1
+        if symptom == 'n':
+            if gender == 'm':
+                masc_kit_assymp += 1
+            if gender == 'f':
+                fem_kit_assymp += 1
 
+    # Calcular a quantidade de medalhas e qual o seu tipo (Ouro, Prata, Bronze) 
     medal = input("Ganhou alguma medalha? (S/N): ").lower()
     while medal not in 'sn':
         medal = str(input("Erro! Digite S ou N: ")).lower()
     
-# Calcular a quantidade de medalhas e qual o seu tipo (Ouro, Prata, Bronze)
-
     if medal == 's':
         print("Digite a quantidade de medalhas em números. Caso não tenha ganhado nenhuma de um tipo apenas digite 0!")
         # quantidade de homens e mulheres que ganharam medalhas:
@@ -240,9 +253,9 @@ else:
 if kit_covid > 0:
     print(f"A quantidade de homens que tomaram o Kit Covid foi de {masc_kit} e a de mulheres {fem_kit}! ")
     if symp_quant > 0:
-        print(f"Dentre estes, {masc_symp} homens e {fem_symp} mulheres tiveram sintomas!")
+        print(f"Dentre estes, {masc_kit_symp} homens e {fem_kit_symp} mulheres tiveram sintomas!")
     if assymptom_quant > 0:    
-        print(f"Dentre estes, {masc_assymp} homens e {fem_assymp} mulheres não tiveram sintomas!")
+        print(f"Dentre estes, {masc_kit_assymp} homens e {fem_kit_assymp} mulheres não tiveram sintomas!")
 else: 
     print("Nenhum atleta tomou o kit covid! ")
 

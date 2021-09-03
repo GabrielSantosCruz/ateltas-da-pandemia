@@ -95,6 +95,9 @@ while rep.lower() == 's':
                     masculine += 1
                 if gender == 'f':
                     feminine += 1
+        else:
+            if temperature > temperature1: # temperatura máxima
+                temperature1 = temperature
 
     else:
         symptom = str(input("Teve algum sintoma (S/N): ")).lower()
@@ -204,7 +207,7 @@ if (symp_quant > 0): # and (symptom == 's'): #and (fever == 'n'):
     # caso alguem tenha tido febre acaba bugando a idade média dos sintomáticos
     symp_age_middle = float(symptom_age / symp_quant) # Idade média dos sintomáticos
 
-if symptom == 'n':    
+if symptom == 'n' and (assymptom_age > 0 or assymptom_quant > 0):    
     assymptom_age_middle = float(assymptom_age / assymptom_quant) # Idade média dos assintomáticos
 
 if temperature > temperature1: # temperatura máxima
@@ -268,7 +271,7 @@ else:
     # Homens: X homens, X com sintomas e X sem sintomas. Um total de X medalhas de ouro, X de prata e X de bronze
     # Mulheres: X mulheres, X com sintomas e X sem sintomas. Um total de X medalhas de ouro, X de prata e X de bronze
 
-if medal == 's':
+if medal == 's' or (medal_masc > 0) or (medal_fem > 0):
     print(f"Dos atletas que ganharam medalhas {medal_masc} eram homens e {medal_fem} eram mulheres! ")
     print(f"Destes {medal_masc_symp} homens tiveram sintomas e {medal_masc_assymp} não tiveram")
     print(f"Das mulheres, {medal_fem_symp} tiveram e {medal_fem_assymp} não tiveram")

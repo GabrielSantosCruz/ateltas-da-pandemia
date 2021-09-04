@@ -39,10 +39,10 @@ while rep.lower() == 's':
     total_age += int(age)
 
     gender = str(input("Digite seu sexo (M/F): ")).lower().strip()
-    while gender not in 'mf':
+    while gender not in 'MmFf' or len(gender) == 0:
         gender = str(input("Erro! Digite M ou F: ")).lower()
     fever = str(input("Teve febre (S/N): ")).lower()
-    while fever not in 'sn':
+    while fever not in 'SsNn' or len(fever) == 0:
         fever = str(input("Erro! Digite S ou N: ")).lower()
         if gender == 'm':
             masculine += 1
@@ -52,26 +52,17 @@ while rep.lower() == 's':
     if fever.lower() == 's':
 
         temperature = float(input("Qual foi a maior temperatura detectada: "))
-        while temperature < 0:
+        while temperature < 37.7 :
             print('Erro! digite uma temperatura válida!')
             temperature = float(input("Qual foi a maior temperatura detectada: "))
-        if temperature < 37.7: # da erro na variavel symptom por conta do else na linha 96
-            print('Isso não é considerado febre')
-            fever = str(input("Teve febre (S/N): ")).lower()
-            while fever not in 'sn':
-                fever = str(input("Erro! Digite S ou N: ")).lower()
-                if gender == 'm':
-                    masculine += 1
-                if gender == 'f':
-                    feminine += 1
-        else:
-            if temperature > temperature1: # temperatura máxima
-                temperature1 = temperature
-            symptom = 's'
+
+        if temperature > temperature1: # temperatura máxima
+            temperature1 = temperature
+        symptom = 's'
 
     else:
         symptom = str(input("Teve algum sintoma (S/N): ")).lower()
-        while symptom not in 'sn':
+        while symptom not in 'SsNn' or len(symptom) == 0:
             symptom = str(input("Erro! Digite S ou N: ")).lower()
 
     if symptom == 's': # calcular a maior e a menor idade dentre o sintomáticos   
@@ -81,25 +72,26 @@ while rep.lower() == 's':
             max_age = age
 
         symp_quant += 1 # quantidade dos atletas sintomáticos
-        symptom_age += age
+        symptom_age += age # somar as idades dos atletas sintomáticos
         # Recorte por gênero dos atletas que tiveram sintomas
         if gender == 'm':
             masc_symp += 1
         if gender == 'f':
             fem_symp += 1
     else:
-        assymptom_quant  += 1
-        assymptom_age += age 
+        assymptom_quant  += 1 # quantidade dos atletas assintomáticos
+        assymptom_age += age # somar as idades dos atletas assintomáticos
+        # Recorte por gênero dos atletas que tiveram sintomas
         if gender == 'm':
             masc_assymp += 1
         if gender == 'f':
             fem_assymp += 1    
 
     kit = str(input("Tomou o kit Covid ao retornar ao Brasil (S/N): ")).lower()
-    while kit not in 'sn':
+    while kit not in 'SsNn' or len(kit) == 0:
         kit = str(input("Erro! Digite S ou N: ")).lower()
     if kit == 's':
-        kit_covid += 1
+        kit_covid += 1 # quantidade dos atletas que tomaram o kit covid
         # quantidade de homens e mulheres que tomaram o kit covid:
         if gender == 'm':
             masc_kit += 1
@@ -120,23 +112,23 @@ while rep.lower() == 's':
 
     # Calcular a quantidade de medalhas e qual o seu tipo (Ouro, Prata, Bronze) 
     medal = input("Ganhou alguma medalha? (S/N): ").lower()
-    while medal not in 'sn':
+    while medal not in 'SsNn' or len(medal) == 0:
         medal = str(input("Erro! Digite S ou N: ")).lower()
     
     if medal == 's':
         print("Digite a quantidade de medalhas em números. Caso não tenha ganhado nenhuma de um tipo apenas digite 0!")
-        # quantidade de homens e mulheres que ganharam medalhas:
+        # quantidade total de homens e mulheres que ganharam medalhas:
         if gender == 'm': 
             medal_masc += 1
         if gender == 'f':
             medal_fem += 1
-        
+        # quantidade de homens e mulheres sintomáticos que ganharam medalhas
         if symptom == 's':
             if gender == 'm': 
                 medal_masc_symp += 1
             if gender == 'f':
                 medal_fem_symp += 1 
-
+        # quantidade de homens e mulheres assintomáticos que ganharam medalhas
         else:
             if gender == 'm': 
                 medal_masc_assymp += 1
@@ -148,16 +140,16 @@ while rep.lower() == 's':
         while not gold.isdigit() or (int(gold) < 0):
             gold = input("Erro! Quantas medalhas de ouro?: ")
         gold = int(gold)
-        if gender == 'm' and symptom == 's': 
+        if gender == 'm' and symptom == 's': # homens sintomáticos que ganharam medalhas de ouro
             masc_gold += gold
             masc_symp_gold += gold
-        if gender == 'm' and symptom == 'n':
+        if gender == 'm' and symptom == 'n': # homens assintomáticos que ganharam medalhas de ouro
             masc_gold += gold
             masc_assymp_gold += gold       
-        if gender == 'f' and symptom == 's':
+        if gender == 'f' and symptom == 's': # mulheres sintomáticas que ganharam medalhas de ouro
             fem_gold += gold           
             fem_symp_gold += gold
-        if gender == 'f' and symptom == 'n':
+        if gender == 'f' and symptom == 'n': # mulheres assintomáticas que ganharam medalhas de ouro
             fem_god += gold
             fem_assymp_gold += gold
 
@@ -165,16 +157,16 @@ while rep.lower() == 's':
         while not silver.isdigit() or (int(silver) < 0):
             silver = input("Erro! Quantas medalhas de prata?: ")
         silver = int(silver)
-        if gender == 'm' and symptom == 's':
+        if gender == 'm' and symptom == 's': # homens sintomáticos que ganharam medalhas de prata
             masc_silver += silver
             masc_symp_silver += silver
-        if gender == 'm' and symptom == 'n':
+        if gender == 'm' and symptom == 'n': # homens assintomáticos que ganharam medalhas de prata
             masc_silver += silver
             masc_assymp_silver += silver    
-        if gender == 'f' and symptom == 's':
+        if gender == 'f' and symptom == 's': # mulheres sintomáticas que ganharam medalhas de prata
             fem_silver += silver
             fem_symp_silver += silver
-        if gender == 'f' and symptom == 'n':
+        if gender == 'f' and symptom == 'n': # mulheres assintomáticas que ganharam medalhas de prata
             fem_silver = silver
             fem_assymp_silver = silver
 
@@ -182,17 +174,20 @@ while rep.lower() == 's':
         while not bronze.isdigit() or (int(bronze) < 0):
             bronze = input("Erro! Quantas medalhas de bronze?: ")
         bronze = int(bronze)
-        if gender == 'm' and symptom == 's': 
+        if gender == 'm' and symptom == 's': # homens sintomáticos que ganharam medalha de bronze
             masc_bronze += bronze
             masc_symp_bronze += bronze
-        if gender == 'm' and symptom == 'n':
+        if gender == 'm' and symptom == 'n': # homens assintomáticos que ganharam medalha de bronze
             masc_bronze += bronze
             masc_assymp_bronze += bronze
-        if gender == 'f':
+        if gender == 'f' and symptom == 's': # mlheres sintomáticas que ganharam medalhas de bronze
             fem_bronze += bronze
-
+            fem_symp_bronze += bronze
+        if gender == 'f' and symptom == 'n': # mulheres assintomáticas que ganharam medalhas de bronze
+            fem_bronze += bronze
+            fem_assymp_bronze += bronze
     rep = str(input("Deseja cadastrar um novo atleta?(S/N): ")).lower()
-    while rep not in 'sn':
+    while rep not in 'SsNn' or len(rep) == 0:
         rep = str(input("Erro! Digite S ou N: "))
     if rep.lower() == 'n':
 

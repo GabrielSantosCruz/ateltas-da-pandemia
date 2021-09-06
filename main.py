@@ -1,21 +1,21 @@
 '''*******************************************************************************
 Autor: Gabriel Santos Cruz
 Componente Curricular: Algoritmos I
-Concluido em: xx/xx/2021
+Concluido em: 06/09/2021
 Declaro que este código foi elaborado por mim de forma individual e não contém nenhum
 trecho de código de outro colega ou de outro autor, tais como provindos de livros e
 apostilas, e páginas ou documentos eletrônicos da Internet. Qualquer trecho de código
 de outra autoria que não a minha está destacado com uma citação para o autor e a fonte
 do código, e estou ciente que estes trechos não serão considerados para fins de avaliação.
-O própio e sua evolução pode ser encontrado em: https://github.com/GabrielSantosCruz/atletas-na-pandemia
+O código e sua evolução pode ser encontrado em: https://github.com/GabrielSantosCruz/atletas-na-pandemia
 ******************************************************************************************/'''
 
-# Entrada de dados:
-print('=' * 30)
-print("Sistema UEFS pelos atletas")
-print('=' * 30)
+
+print('=' * 60)
+print("         Sistema UEFS pelos atletas")
+print('=' * 60)
 print("\nInicio do cadastramento dos atletas!\n")
-rep = 's' # para dar inicio ao loop
+
 symptom = 'n'
 quant = age = symptom_age = symp_quant = assymptom_age = assymptom_quant = total_age = temperature = temperature1 = symp_age_middle = assymptom_age_middle = 0
 max_age = kit_covid = masculine = feminine = masc_kit = fem_kit = masc_not_kit = masc_kit_symp = fem_kit_symp = masc_kit_assymp = fem_kit_assymp = 0
@@ -28,8 +28,11 @@ masc_assymp_gold = masc_assymp_silver = masc_assymp_bronze = 0 # medalhas dos ho
 fem_symp_gold = fem_symp_silver = fem_symp_bronze = 0 # medalhas das mulheres sintomáticas
 fem_assymp_gold = fem_assymp_silver = fem_assymp_bronze = 0 # medalhas das mulheres assintomáticas
 
+# entrada de dados
+rep = 's' # para dar inicio ao loop
 while rep.lower() == 's':
-    quant += 1
+    
+    quant += 1 # contador dos atletas cadastrados
 
     age = input("Digite a idade do atleta: ")
     while not age.isdigit() or (int(age) < 10 or int(age) > 100): # valida se é um número
@@ -41,6 +44,7 @@ while rep.lower() == 's':
     gender = str(input("Digite seu sexo (M/F): ")).lower().strip()
     while gender not in 'MmFf' or len(gender) == 0:
         gender = str(input("Erro! Digite M ou F: ")).lower()
+        
     fever = str(input("Teve febre (S/N): ")).lower()
     while fever not in 'SsNn' or len(fever) == 0:
         fever = str(input("Erro! Digite S ou N: ")).lower()
@@ -186,6 +190,7 @@ while rep.lower() == 's':
         if gender == 'f' and symptom == 'n': # mulheres assintomáticas que ganharam medalhas de bronze
             fem_bronze += bronze
             fem_assymp_bronze += bronze
+            
     rep = str(input("Deseja cadastrar um novo atleta?(S/N): ")).lower()
     while rep not in 'SsNn' or len(rep) == 0:
         rep = str(input("Erro! Digite S ou N: "))
@@ -218,9 +223,9 @@ if symptom == 's':
 percent_symp = float((100 * symp_quant) / quant) # procentagem dos sintomáticos
 
 # Saída de dados:
-print('=' * 30)
-print("Relatório de dados: ")
-print('=' * 30)
+print('=' * 50)
+print("         Relatório de dados: ")
+print('=' * 50)
     # Quantidade de atletas monitorados;
 print(f"A quantidade de atletas monitorados é: {quant}!")
 print('-' * 10)
@@ -250,8 +255,6 @@ else:
     
     '''Um recorte por gênero dos atletas que tomaram o “kit COVID”, indicando ainda, dentre estes, a  
     quantidade de homens e mulheres que tiveram ou não sintomas;'''
-    # quantos homens e mulheres tomaram o kit covid;
-        # destes, quantos homens e mulheres tiveram sintomas. E quantos não tiveram;
 if kit_covid > 0:
     print(f"Os {kit_covid} atletas que tomaram o Kit Covid são:\n{masc_kit} Homens\n{fem_kit} Mulheres")
     if symp_quant > 0:
@@ -269,11 +272,6 @@ else:
     
     '''Um recorte por gênero (M/F) e por sintomas (S/N) dos atletas que 
     trouxeram medalhas para casa, especificando a quantidade de medalhas de ouro, prata e bronze.'''
-    # Dos que trouxeram medalhas, a quantidade de homens e mulheres;
-        # quantos destes tiveram ou não sintomas 
-        # especificar a quantidade de medalhas por gênero
-    # Homens: X homens, X com sintomas e X sem sintomas. Um total de X medalhas de ouro, X de prata e X de bronze
-    # Mulheres: X mulheres, X com sintomas e X sem sintomas. Um total de X medalhas de ouro, X de prata e X de bronze
 if medal == 's' or (medal_masc > 0) or (medal_fem > 0):
     print(f"Os atletas que ganharam medalhas foram:\n{medal_masc} Homem(ns)\n{medal_fem} Mulher(es)")
     print(f"Destes {medal_masc} Homem(ns): {medal_masc_symp} tiveram sintomas e {medal_masc_assymp} não tiveram")
@@ -281,8 +279,7 @@ if medal == 's' or (medal_masc > 0) or (medal_fem > 0):
     print(f"Os {medal_masc_symp} Homem(ns) sintomático(s) ganharam: {masc_symp_gold} de ouro, {masc_symp_silver} de prata e {masc_symp_bronze} de bronze! ")
     print(f"Os {medal_masc_assymp} Homem(ns) assintomático(s) ganharam: {masc_assymp_gold} de ouro, {masc_assymp_silver} de prata e {masc_assymp_bronze} de bronze! ")
     print(f"As {medal_fem_symp} mulher(es) sintomáticas ganharam: {fem_symp_gold} medalhas de ouro, {fem_symp_silver} medalhas de prata e {fem_symp_bronze} medalhas de bronze! ")
-    print(f"As {medal_fem_assymp} mulher(es) assintomáticas ganharam: {fem_assymp_gold} medalhas de ouro, {fem_assymp_silver} medalhas de prata e {fem_assymp_bronze} medalhas de bronze! ")
-    
+    print(f"As {medal_fem_assymp} mulher(es) assintomáticas ganharam: {fem_assymp_gold} medalhas de ouro, {fem_assymp_silver} medalhas de prata e {fem_assymp_bronze} medalhas de bronze! ") 
     print('-' * 10)
 else:
     print("Nenhum atleta ganhou medalha! ")
